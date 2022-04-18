@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  certbot:
+    image: certbot/dns-digitalocean:latest
+    command: certonly --noninteractive --email email@domain.com --agree-tos --no-eff-email --dns-digitalocean --dns-digitalocean-credentials /etc/letsencrypt/.env -d sub1.domain.com -d sub2.domain.com
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/logs:/var/log/letsencrypt
